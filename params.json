@@ -1,0 +1,7 @@
+{
+    "name" : "Sample",
+    "gigabases" : 2,
+    "model": "fast",
+    "data": "$projectDir/data",
+    "outdir": "$projectDir/results"
+}

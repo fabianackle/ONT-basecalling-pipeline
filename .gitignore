@@ -1,0 +1,6 @@
+.DS_store
+.nextflow
+data
+work
+.nextflow.log*
+*.html
