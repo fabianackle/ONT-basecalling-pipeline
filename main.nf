@@ -13,14 +13,14 @@ process Basecalling {
     publishDir params.outdir, mode: 'copy'
 
     input:
-    path(params.data)
+    path(datadir)
 
     output:
     path "calls.bam"
 
     script:
     """
-    dorado basecaller $params.model $params.datadir > calls.bam
+    dorado basecaller ${params.model} ${datadir} > calls.bam
     """
 }
 
@@ -31,5 +31,5 @@ workflow {
     =============================
     """
     .stripIndent()
-    Basecalling(params.data)
+    Basecalling(params.datadir)
 }
