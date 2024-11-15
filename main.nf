@@ -1,6 +1,8 @@
 #!/usr/bin/env nextflow
 
 process Basecalling {
+    container 'ontresearch/dorado:latest'
+
     cpus 8
     memory '8 GB'
     time { 15.min * params.gigabases }
@@ -18,7 +20,7 @@ process Basecalling {
 
     script:
     """
-    singularity exec /data/$USER/dorado --nv dorado basecaller $params.model $params.data > calls.bam
+    dorado basecaller $params.model $params.datadir > calls.bam
     """
 }
 
