@@ -4,9 +4,9 @@ process Basecalling {
     container 'ontresearch/dorado:latest'
 
     cpus 8
-    memory '8 GB'
-    time { 15.min * params.gigabases }
-    clusterOptions '--gpus=V100:1'
+    memory '16 GB'
+    time { 60.min * params.gigabases }
+    clusterOptions '--gpus=V100:2'
 
     tag "Dorado on $params.name"
 
