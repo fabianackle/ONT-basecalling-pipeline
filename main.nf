@@ -1,13 +1,5 @@
 #!/usr/bin/env nextflow
 
-/* Print pipeline info */
-log.info """
-    =============================
-    O N T   B A S E C A L L I N G
-    =============================
-    """
-    .stripIndent()
-
 process Basecalling {
     container 'ontresearch/dorado:latest'
     
@@ -33,5 +25,11 @@ process Basecalling {
 }
 
 workflow {
+    log.info """
+    =============================
+    O N T   B A S E C A L L I N G
+    =============================
+    """
+    .stripIndent()
     Basecalling(params.data)
 }
