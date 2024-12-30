@@ -3,11 +3,6 @@
 process Basecalling {
     container 'ontresearch/dorado:latest'
 
-    cpus 8
-    memory '16 GB'
-    time { 60.min * params.gigabases }
-    clusterOptions '--gpus=V100:2'
-
     tag "Dorado on $params.name"
 
     publishDir params.outdir, mode: 'copy'
@@ -16,11 +11,11 @@ process Basecalling {
     path(datadir)
 
     output:
-    path "calls.bam"
+    path "${params.name}.bam"
 
     script:
     """
-    dorado basecaller ${params.model} ${datadir} > calls.bam
+    dorado basecaller ${params.model} ${datadir} > ${params.name}.ba
     """
 }
 
