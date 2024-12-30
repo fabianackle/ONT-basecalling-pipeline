@@ -1,9 +1,9 @@
 #!/usr/bin/env nextflow
 
-process Basecalling {
+process DORADO {
     container 'ontresearch/dorado:latest'
 
-    tag "Dorado on $params.name"
+    tag "$params.name"
 
     publishDir params.outdir, mode: 'copy'
 
@@ -26,6 +26,7 @@ workflow {
     =============================
     """
     .stripIndent()
+    
     data_ch = Channel.fromPath(params.datadir)
-    Basecalling(data_ch)
+    DORADO(data_ch)
 }
