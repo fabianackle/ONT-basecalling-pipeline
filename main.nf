@@ -15,7 +15,7 @@ process DORADO {
 
     script:
     """
-    dorado basecaller ${params.model} ${datadir} > ${params.name}.ba
+    dorado basecaller ${params.model} ${datadir} > ${params.name}.bam
     """
 }
 
