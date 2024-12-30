@@ -26,5 +26,6 @@ workflow {
     =============================
     """
     .stripIndent()
-    Basecalling(params.datadir)
+    data_ch = Channel.fromPath(params.datadir)
+    Basecalling(data_ch)
 }
