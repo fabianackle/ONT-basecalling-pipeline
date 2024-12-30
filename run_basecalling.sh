@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 eval "$(conda shell.bash hook)"
+conda activate nextflow
 
 nextflow run main.nf \
-    -profile standard \
     -params-file params.json \
     -resume \
     -with-report \
