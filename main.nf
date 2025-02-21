@@ -15,6 +15,7 @@ process DORADO {
 
     script:
     """
+    nvidia-smi > nvidia-smi.log
     dorado basecaller ${params.model} ${datadir} > ${params.name}.bam
     """
 }
