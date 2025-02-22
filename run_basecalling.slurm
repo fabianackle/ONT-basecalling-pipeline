@@ -12,9 +12,12 @@ module load singularityce
 eval "$(conda shell.bash hook)"
 conda activate nextflow
 
+set -u
+
+PARAMS_FILE="$1"
+
 nextflow run main.nf \
-    -params-file params.json \
-    -resume \
+    -params-file PARAMS_FILE.json \
     -with-report \
     -with-timeline \
     -ansi-log false
