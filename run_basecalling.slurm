@@ -17,7 +17,7 @@ set -u
 PARAMS_FILE="$1"
 
 nextflow run main.nf \
-    -params-file PARAMS_FILE.json \
+    -params-file $PARAMS_FILE \
     -with-report \
     -with-timeline \
     -ansi-log false
