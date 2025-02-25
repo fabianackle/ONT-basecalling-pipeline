@@ -2,6 +2,7 @@
     "name" : "Sample",
     "gigabases" : 2,
     "model": "sup",
+    "kit": "SQK-NBD114-24",
     "datadir": "data",
     "outdir": "results"
 }
