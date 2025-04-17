@@ -12,11 +12,13 @@ process DORADO {
 
     output:
     path("${params.name}.bam"), emit:bam
+    path("${params.name}_summary.tsv"), emit:stats
 
     script:
     """
     nvidia-smi > nvidia-smi.log
     dorado basecaller ${params.model} ${datadir} > ${params.name}.bam
+    dorado summary ${params.name}.bam > ${params.name}_summary.tsv
     """
 }
 
@@ -32,19 +34,26 @@ process DEMUX {
 
     output:
     path("demux/*.bam"), emit:bam
+    path("demux/*_summary.tsv"), emit:stats
 
     script:
     """
     mkdir demux
     dorado demux --kit-name $params.kit --output-dir demux $basecalled
+
+    for bam in ./demux/*.bam; do
+        base=\$(basename "\$bam" .bam)
+        dorado summary "\$bam" > "./demux/\${base}_summary.tsv"
+    done
     """
 }
 
 workflow {
     log.info """
-    =============================
-    O N T   B A S E C A L L I N G
-    =============================
+    ┌───────────────────────────────┐
+    │ O N T   B A S E C A L L I N G │
+    │ by Fabian Ackle               │  
+    └───────────────────────────────┘
     """
     .stripIndent()
     
