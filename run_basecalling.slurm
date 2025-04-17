@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#SBATCH --cpus-per-task=1
-#SBATCH --mem=2048
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=4096
 #SBATCH --time=1-00:00:00
 #SBATCH --output=log/main_%j
 ##SBATCH --mail-user=user@example.com
