@@ -17,7 +17,9 @@ process DORADO {
     script:
     """
     nvidia-smi > nvidia-smi.log
-    dorado basecaller ${params.model} ${datadir} > ${params.name}.bam
+    dorado basecaller \
+        ${params.model} ${datadir} \
+        --kit-name $params.kit > ${params.name}.bam
     dorado summary ${params.name}.bam > ${params.name}_summary.tsv
     """
 }
@@ -39,7 +41,7 @@ process DEMUX {
     script:
     """
     mkdir demux
-    dorado demux --kit-name $params.kit --output-dir demux $basecalled
+    dorado demux --no-classify --output-dir demux $basecalled
 
     for bam in ./demux/*.bam; do
         base=\$(basename "\$bam" .bam)
