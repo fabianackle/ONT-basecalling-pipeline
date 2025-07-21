@@ -12,7 +12,6 @@ process DORADO {
 
     output:
     path("${params.name}.bam"), emit:bam
-    path("${params.name}_summary.tsv"), emit:stats
 
     script:
     """
@@ -20,7 +19,6 @@ process DORADO {
     dorado basecaller \
         ${params.model} ${datadir} \
         --kit-name $params.kit > ${params.name}.bam
-    dorado summary ${params.name}.bam > ${params.name}_summary.tsv
     """
 }
 
@@ -36,17 +34,11 @@ process DEMUX {
 
     output:
     path("demux/*.bam"), emit:bam
-    path("demux/*_summary.tsv"), emit:stats
 
     script:
     """
     mkdir demux
     dorado demux --no-classify --output-dir demux $basecalled
-
-    for bam in ./demux/*.bam; do
-        base=\$(basename "\$bam" .bam)
-        dorado summary "\$bam" > "./demux/\${base}_summary.tsv"
-    done
     """
 }
 
