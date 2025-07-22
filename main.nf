@@ -18,7 +18,9 @@ process DORADO {
     nvidia-smi > nvidia-smi.log
     dorado basecaller \
         ${params.model} ${datadir} \
-        --kit-name $params.kit > ${params.name}.bam
+        --kit-name $params.kit \
+        --barcode-both-ends \
+        > ${params.name}.bam
     """
 }
 
