@@ -20,6 +20,7 @@ process DORADO {
         ${params.model} ${datadir} \
         --kit-name $params.kit \
         --barcode-both-ends \
+        --emit-moves \
         > ${params.name}.bam
     """
 }
