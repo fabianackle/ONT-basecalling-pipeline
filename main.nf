@@ -9,14 +9,14 @@ workflow {
         """.stripIndent()
     )
 
-    data_ch = Channel.fromPath(params.datadir)
+    data_ch = channel.fromPath(params.datadir)
     DORADO(data_ch)
     DEMUX(DORADO.out.bam)
 }
 
 
 process DORADO {
-    container 'ontresearch/dorado:latest'
+    container 'ontresearch/dorado:shaf2aed69855de85e60b363c9be39558ef469ec365'
 
     tag "${params.name}"
 
@@ -41,7 +41,7 @@ process DORADO {
 }
 
 process DEMUX {
-    container 'ontresearch/dorado:latest'
+    container 'ontresearch/dorado:shaf2aed69855de85e60b363c9be39558ef469ec365'
 
     tag "${params.name}"
 
@@ -51,7 +51,7 @@ process DEMUX {
     path basecalled
 
     output:
-    path ("demux/*.bam"), emit: bam
+    path ("demux"), emit: bam
 
     script:
     """
