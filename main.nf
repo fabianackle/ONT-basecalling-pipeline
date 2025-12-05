@@ -16,8 +16,6 @@ workflow {
 
 
 process DORADO {
-    container 'ontresearch/dorado:shaf2aed69855de85e60b363c9be39558ef469ec365'
-
     tag "${params.name}"
 
     publishDir params.outdir, mode: 'copy'
@@ -41,8 +39,6 @@ process DORADO {
 }
 
 process DEMUX {
-    container 'ontresearch/dorado:shaf2aed69855de85e60b363c9be39558ef469ec365'
-
     tag "${params.name}"
 
     publishDir params.outdir, mode: 'copy'
