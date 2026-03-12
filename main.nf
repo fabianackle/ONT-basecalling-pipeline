@@ -31,7 +31,7 @@ process DORADO {
     script:
     """
     nvidia-smi > nvidia-smi.log
-    doardo -vv > version.log
+    dorado -vv > version.log
     
     dorado basecaller \
         ${params.model} ${datadir} \
