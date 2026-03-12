@@ -16,6 +16,8 @@ workflow {
 
 
 process DORADO {
+    container "nanoporetech/dorado:shac8f356489fa8b44b31beba841b84d2879de2088e"
+
     tag "${params.name}"
 
     publishDir params.outdir, mode: 'copy'
@@ -29,6 +31,8 @@ process DORADO {
     script:
     """
     nvidia-smi > nvidia-smi.log
+    doardo -vv > version.log
+    
     dorado basecaller \
         ${params.model} ${datadir} \
         --kit-name ${params.kit} \
