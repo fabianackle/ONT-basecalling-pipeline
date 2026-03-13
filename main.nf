@@ -16,8 +16,7 @@ workflow {
 
 
 process DORADO {
-    container "nanoporetech/dorado:shac8f356489fa8b44b31beba841b84d2879de2088e"
-
+    label "dorado"
     tag "${params.name}"
 
     publishDir params.outdir, mode: 'copy'
@@ -43,6 +42,7 @@ process DORADO {
 }
 
 process DEMUX {
+    label "dorado"
     tag "${params.name}"
 
     publishDir params.outdir, mode: 'copy'
