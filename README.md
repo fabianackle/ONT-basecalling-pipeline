@@ -5,6 +5,7 @@ ONT basecalling pipeline is a simple nextflow pipeline for basecalling nanopore 
 |---------------|----------|----------------------------------------------|
 | `name`        | String   | Name of your sequencing experiment.          |
 | `gigabases`   | Integer  | Number of gigabases sequenced.               |
+| `model`       | String   | Basecalling model.                           |
 | `kit`         | String   | Barcoding kit name.                          |
 | `datadir`     | String   | Directory of the raw sequencing data (POD5). |
 | `outdir`      | String   | Directory for the basecalled data.           |
